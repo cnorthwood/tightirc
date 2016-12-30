@@ -12,7 +12,6 @@ const scss = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const karma = require('karma');
 const eslint = require('gulp-eslint');
-const flow = require('gulp-flowtype');
 const sassLint = require('gulp-sass-lint');
 const imagemin = require('gulp-imagemin');
 const hotModuleReload = require('browserify-hmr');
@@ -137,11 +136,6 @@ function lintJs() {
         .pipe(eslint.failAfterError());
 }
 
-function typecheckJs() {
-    return gulp.src(JS_PATHS)
-        .pipe(flow({ all: true }));
-}
-
 function lintScss() {
     return gulp.src(SCSS_PATHS)
         .pipe(sassLint())
@@ -159,7 +153,6 @@ gulp.task('build-js', () => buildJs(false));
 gulp.task('build-js-dev', () => buildJs(true));
 gulp.task('test-js', testJs);
 gulp.task('eslint', lintJs);
-gulp.task('typecheck', typecheckJs);
 
 gulp.task('build-scss', () => buildScss(false));
 gulp.task('build-scss-dev', () => buildScss(true));
@@ -170,7 +163,7 @@ gulp.task('images', compressImages);
 gulp.task('default', ['build', 'test']);
 gulp.task('build', ['build-js', 'build-scss', 'images']);
 gulp.task('build-dev', ['build-js-dev', 'build-scss-dev', 'images']);
-gulp.task('test', ['test-js', 'eslint', 'typecheck', 'scss-lint']);
+gulp.task('test', ['test-js', 'eslint', 'scss-lint']);
 
 gulp.task('watch', ['build-scss-dev'], () => {
     watchJs();

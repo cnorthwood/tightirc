@@ -1,10 +1,9 @@
 const bunyan = require('bunyan');
-const process = require('process');
 
-const level = process.env.NODE_ENV === 'production' ? 'warn' : 'info';
+const level = process.env.NODE_ENV === 'production' ? bunyan.WARN : bunyan.INFO;
 
-function loggerFactory(name) {
-    bunyan.createLogger({
+function loggerFactory(name: string) {
+    return bunyan.createLogger({
         name,
         level,
         serializers: bunyan.stdSerializers,

@@ -1,12 +1,15 @@
 {
     "extends": "airbnb",
+    "parser": "babel-eslint",
     "plugins": [
         "react",
         "jsx-a11y",
-        "import"
+        "import",
+        "flowtype"
     ],
     "rules": {
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "no-underscore-dangle": "off"
     },
     "env": {
         "jasmine": true
