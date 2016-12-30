@@ -1,0 +1,61 @@
+{
+  "name": "tightirc",
+  "version": "0.0.1",
+  "description": "TightIRC is an IRCv3 server with web-based client",
+  "main": "src/app/server.js",
+  "scripts": {
+    "test": "jasmine && eslint app/ spec/ && flow check --all src/app",
+    "test-watch": "nodemon --watch src/app --watch spec/app --exec npm test",
+    "dev": "nodemon --watch app | node_modules/.bin/bunyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnorthwood/tightirc.git"
+  },
+  "keywords": [
+    "irc"
+  ],
+  "author": "Chris Northwood <chris@pling.org.uk>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cnorthwood/tightirc/issues"
+  },
+  "homepage": "https://github.com/cnorthwood/tightirc#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "browserify-hmr": "^0.3.5",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "flow-bin": "^0.37.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-flowtype": "^1.0.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^3.0.0",
+    "gulp-sass-lint": "^1.3.2",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "*",
+    "karma": "^1.3.0",
+    "karma-browserify": "^5.1.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "nodemon": "^1.11.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.8.0"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.5"
+  }
+}
