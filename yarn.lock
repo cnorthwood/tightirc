@@ -4593,6 +4593,10 @@ node-sass@^4.0.0:
     sass-graph "^2.1.1"
     stdout-stream "^1.4.0"
 
+node-statsd@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/node-statsd/-/node-statsd-0.1.1.tgz#27a59348763d0af7a037ac2a031fef3f051013d3"
+
 node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
