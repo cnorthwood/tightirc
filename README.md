@@ -1,9 +1,34 @@
 LightIRC
 ========
 
+[![Known Vulnerabilities](https://snyk.io/test/github/cnorthwood/tightirc/badge.svg)](https://snyk.io/test/github/cnorthwood/tightirc)
+[![Build Status](https://travis-ci.org/cnorthwood/tightirc.svg?branch=master)](https://travis-ci.org/cnorthwood/tightirc)
+
 Light IRC is a user-centric IRC server and web-based client.
 
 It is in an early stage of development and is looking for contributors!
+
+Running a copy
+--------------
+
+_NOTE: This is not yet an "MVP" state_
+
+* Install [Yarn](https://yarnpkg.com/en/docs/install)
+* Install a copy of Redis and configure it to allow keyspace notifications (_TODO: expand this_)
+* Clone a copy of this repo
+* Run `yarn` to install the dependencies
+* Set environment variables as below to configure the application 
+* Run `npm start` to start a copy
+
+Configuration
+-------------
+
+* `NODE_ENV` - the application respects the NODE_ENV variable. When
+  `NODE_ENV` is set to `production` then logging becomes terser.
+* `TIGHTIRC_REDIS_HOST` - this should be set to a URL pointing at a Redis
+  instance. If not set, it defaults to `localhost`.
+* `TIGHTIRC_REDIS_PORT` - this should be set to the port number of a Redis
+  instance. If not set, it defaults to `6379`.
 
 Getting Started for Developers
 ------------------------------

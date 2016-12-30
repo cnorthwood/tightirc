@@ -63,6 +63,11 @@
   "dependencies": {
     "bunyan": "^1.8.5",
     "carrier": "^0.3.0",
-    "node-statsd": "^0.1.1"
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "node-statsd": "^0.1.1",
+    "redis": "*",
+    "redis-commands": "*",
+    "then-redis": "^2.0.1"
   }
 }
