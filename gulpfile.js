@@ -16,6 +16,7 @@ const sassLint = require('gulp-sass-lint');
 const imagemin = require('gulp-imagemin');
 const hotModuleReload = require('browserify-hmr');
 const livereload = require('gulp-livereload');
+const sri = require('gulp-sri');
 const fs = require('fs');
 const path = require('path');
 
@@ -33,7 +34,7 @@ function getBrowserify(dev) {
         debug: dev,
     };
     browserifyConfig.entries = ['./src/client/js/bootstrap.js'];
-    if (dev && !gutil.env.no_hmr) {
+    if (dev) {
         babelifyPlugins.push([
             'react-transform', {
                 transforms: [{
@@ -66,7 +67,9 @@ function bundleJs(pipeline, dev) {
     if (dev) { bundle = bundle.pipe(sourcemaps.init({ loadMaps: true })); }
     if (!dev) { bundle = bundle.pipe(uglify()); }
     if (dev) { bundle = bundle.pipe(sourcemaps.write()); }
-    bundle = bundle.pipe(gulp.dest('static/js/'));
+    bundle = bundle.pipe(gulp.dest('static/js/'))
+        .pipe(sri())
+        .pipe(gulp.dest('build/'));
 
     return bundle;
 }
@@ -76,23 +79,22 @@ function buildJs(dev) {
 }
 
 function watchJs() {
-    let pipeline = getBrowserify(true)
-        .plugin(watchify, { ignoreWatch: ['**/node_modules/**'] });
-    if (!gutil.env.no_hmr) {
-        pipeline = pipeline.plugin(
+    try { fs.mkdirSync('build'); } catch (e) {};
+    fs.writeFileSync(
+        'build/_livereload.js',
+        `window.LiveReloadOptions = {host: '${HMR_HOST}'};require('livereload-js');`
+    );
+
+    const pipeline = getBrowserify(true)
+        .plugin(watchify, { ignoreWatch: ['**/node_modules/**'] })
+        .plugin(
             hotModuleReload, { mode: 'websocket', url: `http://${HMR_HOST}:3123`, hostname: '0.0.0.0' }
-        );
-        try { fs.mkdirSync('build'); } catch (e) {};
-        fs.writeFileSync(
-            'build/_livereload.js',
-            `window.LiveReloadOptions = {host: '${HMR_HOST}'};require('livereload-js');`
-        );
-        pipeline = pipeline.add('build/_livereload.js');
-    }
-    pipeline.on('update', () => {
-        bundleJs(pipeline, true);
-    });
-    pipeline.on('log', gutil.log);
+        )
+        .add('build/_livereload.js')
+        .on('update', () => {
+            bundleJs(pipeline, true);
+        })
+        .on('log', gutil.log);
     bundleJs(pipeline, true);
 }
 
@@ -118,6 +120,10 @@ function buildScss(dev) {
     if (dev) {
         pipeline = pipeline.pipe(livereload());
     }
+
+    pipeline = pipeline.pipe(sri())
+        .pipe(gulp.dest('build/'));
+
     return pipeline;
 }
 

@@ -9,7 +9,8 @@
     ],
     "rules": {
         "indent": ["error", 4],
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     },
     "env": {
         "jasmine": true

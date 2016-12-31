@@ -29,6 +29,8 @@ Configuration
   instance. If not set, it defaults to `localhost`.
 * `TIGHTIRC_REDIS_PORT` - this should be set to the port number of a Redis
   instance. If not set, it defaults to `6379`.
+* `TIGHTIRC_STATIC_ASSETS_CDN` - this should be set to the location the static
+  assets are being served from. It defaults to `/static`.
 
 Getting Started for Developers
 ------------------------------
