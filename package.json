@@ -8,7 +8,7 @@
     "test": "jasmine && eslint app/ spec/ && flow check --all",
     "test-watch": "nodemon --watch src/app --watch spec/app --exec npm test",
     "dev": "nodemon --watch src/app --exec babel-node src/app/server.js | node_modules/.bin/bunyan",
-    "postinstall": "flow-typed install"
+    "postinstall": "flow-typed install && gulp build"
   },
   "repository": {
     "type": "git",
