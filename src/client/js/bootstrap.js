@@ -1,3 +1,3 @@
-import init from './main.jsx';
+import init from './main';
 
 init(window.document.getElementById('main'));

@@ -13,6 +13,7 @@
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     },
     "env": {
-        "jasmine": true
+        "jasmine": true,
+        "browser": true
     }
 }

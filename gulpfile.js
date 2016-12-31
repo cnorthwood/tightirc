@@ -29,11 +29,12 @@ const HMR_HOST = 'localhost';
 function getBrowserify(dev) {
     const babelifyPlugins = ['transform-flow-strip-types'];
     const browserifyConfig = {
+        entries: ['./src/client/js/bootstrap.js'],
         cache: {},
         packageCache: {},
         debug: dev,
+        extensions: ['.jsx', '.js'],
     };
-    browserifyConfig.entries = ['./src/client/js/bootstrap.js'];
     if (dev) {
         babelifyPlugins.push([
             'react-transform', {
